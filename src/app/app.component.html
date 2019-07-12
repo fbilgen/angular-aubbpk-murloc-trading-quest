@@ -1,2 +1,9 @@
 
-<app-blue></app-blue>
+<app-blue (blueTargets)="prepareBlues($event)"></app-blue>
+
+<br>
+<div class="jumbotron">
+  <div *ngFor="let item of result">
+    {{item}}
+    </div>
+  </div>

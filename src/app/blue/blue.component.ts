@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, Output,EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
 
 import { IngredientService } from '../ingredient.service';
@@ -13,6 +13,9 @@ import { Item, Ingredient } from '.././app.models';
 export class BlueComponent {
   bluesForm: FormGroup;
   blues: Item[];
+
+  @Output() blueTargets = new EventEmitter<Ingredient[]>();
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,20 +36,19 @@ export class BlueComponent {
 
   getBlueTargets() {
 
-    let target1: Ingredient[];
-    //      = [
-    //   { name: 'Healthy Murloc Lunch', amount: 3 },
-    //   { name: 'Particularly Dense Rock', amount: 3 },
-    //   { name: 'Smelly Pile of Gloop', amount: 3 }
-    // ];
+    let target: Ingredient[] =[];
+
     Object.keys(this.bluesForm.controls).forEach(key => {
       let ingredient = this.bluesForm.controls[key].value as Ingredient;
       if (ingredient.name && ingredient.amount) {
 
         console.log(this.bluesForm.controls[key].value);
+        target.push(this.bluesForm.controls[key].value);
       }
 
     });
+
+    this.blueTargets.emit(target);
 
 
     // console.log(this.bluesForm.value as FormArray);
