@@ -1,0 +1,60 @@
+<div class="container">
+<form [formGroup]="bluesForm" (ngSubmit)="getBlueTargets()">
+  <div formGroupName='blue1'>
+	<mat-form-field class="col-6">
+		<mat-label>
+			Blue Items
+		</mat-label>
+		<mat-select formControlName="name">
+			<mat-option *ngFor="let blue of blues" [value]="blue.name">
+				{{blue.name}}
+			</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field class="col-3">
+        <mat-label>
+     Amount
+    </mat-label>
+		<input formControlName="amount" class="amount-box" matInput type="number" min=1 max=10>
+  </mat-form-field>
+</div>
+<div formGroupName='blue2'>
+<mat-form-field class="col-6">
+  <mat-label>
+     Blue Items
+    </mat-label>
+     <mat-select formControlName="name">
+    <mat-option *ngFor="let blue of blues" [value]="blue.name">
+      {{blue.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+ <mat-form-field class="col-3">
+    <mat-label>
+     Amount
+    </mat-label>
+    	<input formControlName='amount' class="amount-box" matInput type="number" min=1 max=10>
+  </mat-form-field>
+</div>
+<div formGroupName='blue3'>
+<mat-form-field class="col-6">
+  <mat-label>
+      Blue Items
+    </mat-label>
+     <mat-select formControlName='name'>
+    <mat-option *ngFor="let blue of blues" [value]="blue.name">
+      {{blue.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+ <mat-form-field class="col-3">
+       <mat-label>
+     Amount
+    </mat-label>
+    	<input formControlName='amount' class="amount-box" matInput type="number" min=1 max=10>
+  </mat-form-field>
+  </div>
+
+  <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
