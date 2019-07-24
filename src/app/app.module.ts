@@ -6,7 +6,7 @@ import { DemoMaterialModule} from './material-module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { BlueComponent} from './blue/blue.component';
+import { RareComponent} from './rare/rare.component';
 import { PurpleComponent} from './purple/purple.component';
 import { IngredientService } from './ingredient.service';
 
@@ -19,7 +19,7 @@ import { IngredientService } from './ingredient.service';
     ReactiveFormsModule
     ],
   providers: [ IngredientService],
-  declarations: [AppComponent, BlueComponent, PurpleComponent],
+  declarations: [AppComponent, RareComponent, PurpleComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
