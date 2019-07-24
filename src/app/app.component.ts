@@ -9,7 +9,7 @@ import { IngredientService } from './ingredient.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
+  commons: Item[];
   uncommons: Item[];
   rares: Item[];
   epics: Item[];
@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.commons = this.ingredientService.getCommons();
     this.uncommons = this.ingredientService.getUncommons();
     this.rares = this.ingredientService.getRares();
     this.epics = this.ingredientService.getEpics();
@@ -31,16 +32,16 @@ export class AppComponent implements OnInit {
     this.rareResult = [];
     target.forEach(x => {
       // create rareItem result
-      let result = { name: x.name, ingredients: [], color: "blue", amount: x.amount };
+      let result = { name: x.name, ingredients: [], color: "blue", amount: x.amount, murloc:this.rares.find(r => r.name== x.name).murloc};
 
       // uncommons
       this.rares.find(r => r.name == x.name).ingredients
         .forEach(u => {
-          result.ingredients.push({ name: u.name, amount: x.amount * u.amount, color: "green" });
+          result.ingredients.push({ name: u.name, amount: x.amount * u.amount, color: "green", murloc:this.uncommons.find(x=> x.name == u.name).murloc});
           //commons : clone from uncommons
           [...this.uncommons.find(w => w.name == u.name).ingredients]
             .forEach(w => {
-              result.ingredients.push({ name: w.name, amount: x.amount * u.amount * w.amount, color: "white" });
+              result.ingredients.push({ name: w.name, amount: x.amount * u.amount * w.amount, color: "white", murloc : this.commons.find(x => x.name == w.name).murloc });
             });
         });
 
