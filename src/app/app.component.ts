@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
     this.blues = this.ingredientService.getBlues();
   }
 
-  prepareBlues(target: Ingredient[]) {
+  prepareRares(target: Ingredient[]) {
 
     target.forEach(x => {
       let blueItem = { name: x.name, ingredients: [], color:"blue", amount:x.amount };
