@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Item, Ingredient } from './app.models';
 import { IngredientService } from './ingredient.service';
@@ -8,37 +8,39 @@ import { IngredientService } from './ingredient.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   bluesForm: FormGroup;
   greens: Item[];
   blues: Item[];
-  result: Item[];
+  blueResult: Item[] = [];
 
   hurlgrl = ['Sweet Sea Vegetable', 'Jar of Fish Faces', 'Dirty Murloc Sock', 'Healty Murloc Lunch', 'Cultist Pinky Finger'];
 
   constructor(private ingredientService: IngredientService) {
   }
 
-  prepareBlues(target: Ingredient[]) {
-    this.result = [];
+  ngOnInit(){
     this.greens = this.ingredientService.getGreens();
     this.blues = this.ingredientService.getBlues();
+  }
+
+  prepareBlues(target: Ingredient[]) {
+
     target.forEach(x => {
-      this.result.push({ name: x.name, ingredients: [], color:"blue", amount:x.amount });
+      let blueItem = { name: x.name, ingredients: [], color:"blue", amount:x.amount };
       var greens = this.blues.find(b => b.name == x.name).ingredients;
-      var blueTarget = this.result.find(item => item.name == x.name);
 
       greens.forEach(g => {
-        blueTarget.ingredients.push({ name: g.name, amount: x.amount * g.amount, color:"green"});
-        //this.result.push({name : g.name , amount : x.amount * g.amount });
+        blueItem.ingredients.push({ name: g.name, amount: x.amount * g.amount, color:"green"});
 
         var whites = [...this.greens.find(w => w.name == g.name).ingredients];
         whites.forEach(w => {
-          blueTarget.ingredients.push({ name: w.name, amount: x.amount * g.amount * w.amount, color:"white" });
-          // this.result.push({name : w.name , amount: x.amount * g.amount * w.amount});
+        blueItem.ingredients.push({ name: w.name, amount: x.amount * g.amount * w.amount, color:"white" });
         });
       });
+
+      this.blueResult.push(blueItem);
     });
   }
 

@@ -1,21 +1,18 @@
-
-
-
 <mat-tab-group>
-  <mat-tab label="Purple"> 
-<app-purple></app-purple>
- </mat-tab>
-  <mat-tab label="Blue"> 
-    <app-blue (blueTargets)="prepareBlues($event)"></app-blue>
-    </mat-tab>
+	<mat-tab label="Purple">
+		<app-purple></app-purple>
+	</mat-tab>
+	<mat-tab label="Blue">
+		<app-blue (blueTargets)="prepareBlues($event)"></app-blue>
+	</mat-tab>
 </mat-tab-group>
 
 
 <br>
 <h3> Results </h3>
-<div class="jumbotron" *ngFor="let item of result">
+<div class="jumbotron" *ngFor="let item of blueResult">
     <label [class]="item.color">  {{item.name}} ({{item.amount}}) </label>
     <div *ngFor="let ingredient of item.ingredients">
       <label [class]="ingredient.color">{{ingredient.name}} ({{ingredient.amount}}) </label>
-      </div>
     </div>
+</div>
