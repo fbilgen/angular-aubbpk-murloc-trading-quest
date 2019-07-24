@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){
     this.greens = this.ingredientService.getGreens();
-    this.blues = this.ingredientService.getBlues();
+    this.blues = this.ingredientService.getRares();
   }
 
   prepareRares(target: Ingredient[]) {

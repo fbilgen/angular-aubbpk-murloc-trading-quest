@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { RareComponent} from './rare/rare.component';
-import { PurpleComponent} from './purple/purple.component';
+import { EpicComponent} from './epic/epic.component';
 import { IngredientService } from './ingredient.service';
 
 @NgModule({
@@ -19,7 +19,7 @@ import { IngredientService } from './ingredient.service';
     ReactiveFormsModule
     ],
   providers: [ IngredientService],
-  declarations: [AppComponent, RareComponent, PurpleComponent],
+  declarations: [AppComponent, RareComponent, EpicComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

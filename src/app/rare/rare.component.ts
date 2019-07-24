@@ -34,7 +34,7 @@ export class RareComponent {
   }
 
 
-  getBlueTargets() {
+  getRareTargets() {
 
     let target: Ingredient[] =[];
 
