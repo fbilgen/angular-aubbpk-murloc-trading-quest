@@ -12,7 +12,7 @@ import { Item, Ingredient } from '.././app.models';
 })
 export class RareComponent {
   raresForm: FormGroup;
-  blues: Item[];
+  rares: Item[];
 
   @Output() rareTargets = new EventEmitter<Ingredient[]>();
 
@@ -25,12 +25,12 @@ export class RareComponent {
   ngOnInit() {
     // initialize the form
     this.raresForm = this.formBuilder.group({
-      blue1: this.formBuilder.group({ name: [''], amount: [''] }),
-      blue2: this.formBuilder.group({ name: [''], amount: [''], }),
-      blue3: this.formBuilder.group({ name: [''], amount: [''] })
+      rare1: this.formBuilder.group({ name: [''], amount: [''] }),
+      rare2: this.formBuilder.group({ name: [''], amount: [''], }),
+      rare3: this.formBuilder.group({ name: [''], amount: [''] })
     });
 
-    this.blues = this.ingredientService.getRares();
+    this.rares = this.ingredientService.getRares();
   }
 
 
@@ -48,8 +48,5 @@ export class RareComponent {
 
     this.rareTargets.emit(target);
 
-
-    // console.log(this.bluesForm.value as FormArray);
-    // console.log(this.bluesForm.get('blue1').value);
   }
 }
