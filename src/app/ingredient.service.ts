@@ -20,7 +20,7 @@ export class IngredientService{
     { name: 'Curious Murloc Horn', ingredients: [{ name: 'Slimy Naga Eyeball', amount: 3 }] },
   ];
 
-  blues: Item[] = [
+  rares: Item[] = [
     { name: 'Ghost Food', ingredients: [{ name: 'Curious Murloc Horn', amount: 6 }] },
     { name: 'Particularly Dense Rock', ingredients: [{ name: 'Bag of Who-Knows-What', amount: 3 }, { name: 'Jar of Fish Faces', amount: 3 }] },
     { name: 'Smelly Pile of Gloop', ingredients: [{ name: 'Just Regular Butter', amount: 2 }] },
@@ -39,8 +39,8 @@ export class IngredientService{
 
   }
 
-  getBlues(){
-    return this.blues;
+  getRares(){
+    return this.rares;
   }
 
   getGreens(){

@@ -7,10 +7,10 @@ import { IngredientService } from '../ingredient.service';
 import { Item, Ingredient } from '.././app.models';
 
 @Component({
-  selector: 'app-blue',
-  templateUrl: 'blue.component.html'
+  selector: 'app-rare',
+  templateUrl: 'rare.component.html'
 })
-export class BlueComponent {
+export class RareComponent {
   raresForm: FormGroup;
   blues: Item[];
 
@@ -30,7 +30,7 @@ export class BlueComponent {
       blue3: this.formBuilder.group({ name: [''], amount: [''] })
     });
 
-    this.blues = this.ingredientService.getBlues();
+    this.blues = this.ingredientService.getRares();
   }
 
 
