@@ -2,6 +2,7 @@
 export class Item {
   name: string;
   ingredients: Ingredient[];
+  murloc: string;
   color?: string;
   amount?: number;
 }
