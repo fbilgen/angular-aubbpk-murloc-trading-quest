@@ -10,14 +10,21 @@ body{
 
 .green{
  color: #28a745;
+  font-size:12px;
 
 }
 
 .white{
-
+  font-size:11px;
 }
 
 .blue{
   color: #007bff;
-  font-size:large;
+    font-size:14px;
+
+}
+
+.purple{
+  color:purple;
+  font-size:16px;
 }

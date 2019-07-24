@@ -12,36 +12,66 @@ export class AppComponent implements OnInit {
 
   uncommons: Item[];
   rares: Item[];
-  rareResult: Item[] = [];
+  epics: Item[];
+  rareResult: Item[];
+  epicResult: Item[];
 
   hurlgrl = ['Sweet Sea Vegetable', 'Jar of Fish Faces', 'Dirty Murloc Sock', 'Healty Murloc Lunch', 'Cultist Pinky Finger'];
 
   constructor(private ingredientService: IngredientService) {
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.uncommons = this.ingredientService.getUncommons();
     this.rares = this.ingredientService.getRares();
+    this.epics = this.ingredientService.getEpics();
   }
 
   prepareRares(target: Ingredient[]) {
-
+    this.rareResult = [];
     target.forEach(x => {
       // create rareItem result
-      let result = { name: x.name, ingredients: [], color:"blue", amount:x.amount };
+      let result = { name: x.name, ingredients: [], color: "blue", amount: x.amount };
 
       // uncommons
       this.rares.find(r => r.name == x.name).ingredients
-      .forEach(u => {
-        result.ingredients.push({ name: u.name, amount: x.amount * u.amount, color:"green"});
-        //commons : clone from uncommons
-        [...this.uncommons.find(w => w.name == u.name).ingredients]
-        .forEach(w => {
-          result.ingredients.push({ name: w.name, amount: x.amount * u.amount * w.amount, color:"white" });
+        .forEach(u => {
+          result.ingredients.push({ name: u.name, amount: x.amount * u.amount, color: "green" });
+          //commons : clone from uncommons
+          [...this.uncommons.find(w => w.name == u.name).ingredients]
+            .forEach(w => {
+              result.ingredients.push({ name: w.name, amount: x.amount * u.amount * w.amount, color: "white" });
+            });
         });
-      });
 
       this.rareResult.push(result);
+    });
+  }
+
+
+  prepareEpics(target: Ingredient[]) {
+    this.epicResult = [];
+
+    target.forEach(x => {
+      // create epicItem result
+      let result = { name: x.name, ingredients: [], color: "purple", amount: x.amount };
+
+      // rares
+      this.epics.find(e => e.name == x.name).ingredients
+        .forEach(r => {
+          result.ingredients.push({ name: r.name, amount: x.amount * r.amount, color: "blue" });
+          // uncommons: clone from rares
+          [...this.rares.find(y => y.name == r.name).ingredients]
+            .forEach(u => {
+              result.ingredients.push({ name: u.name, amount: x.amount * r.amount * u.amount, color: "green" });
+              //commons : clone from uncommons
+              [...this.uncommons.find(w => w.name == u.name).ingredients]
+                .forEach(w => {
+                  result.ingredients.push({ name: w.name, amount: x.amount * r.amount * u.amount * w.amount, color: "white" });
+                });
+            });
+        });
+      this.epicResult.push(result);
     });
   }
 

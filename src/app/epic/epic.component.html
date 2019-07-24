@@ -1,5 +1,66 @@
+<div class="container">
+	<br>
+<form [formGroup]="epicsForm" (ngSubmit)="getEpicTargets()">
+  <div formGroupName='epic1'>
+	<mat-form-field class="col-6">
+		<mat-label>
+			Epic Items
+		</mat-label>
+		<mat-select formControlName="name">
+			<mat-option *ngFor="let epic of epics" [value]="epic.name">
+				{{epic.name}}
+			</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field class="col-3">
+        <mat-label>
+     Amount
+    </mat-label>
+		<input formControlName="amount" class="amount-box" matInput type="number" min=1 max=10>
+  </mat-form-field>
+</div>
+  <div formGroupName='epic2'>
+	<mat-form-field class="col-6">
+		<mat-label>
+			Epic Items
+		</mat-label>
+		<mat-select formControlName="name">
+			<mat-option *ngFor="let epic of epics" [value]="epic.name">
+				{{epic.name}}
+			</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field class="col-3">
+        <mat-label>
+     Amount
+    </mat-label>
+		<input formControlName="amount" class="amount-box" matInput type="number" min=1 max=10>
+  </mat-form-field>
+</div>
+  <div formGroupName='epic3'>
+	<mat-form-field class="col-6">
+		<mat-label>
+			Epic Items
+		</mat-label>
+		<mat-select formControlName="name">
+			<mat-option *ngFor="let epic of epics" [value]="epic.name">
+				{{epic.name}}
+			</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field class="col-3">
+        <mat-label>
+     Amount
+    </mat-label>
+		<input formControlName="amount" class="amount-box" matInput type="number" min=1 max=10>
+  </mat-form-field>
+</div>
 
 
-<div>
-  this is Purple component
-  </div>
+  <div class="col-2">
+     <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+
+ 
+  </form>
+</div>
