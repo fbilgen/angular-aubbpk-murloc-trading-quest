@@ -1,10 +1,13 @@
 
 export class Item {
   name: string;
-  ingredients: Ingredient[]
+  ingredients: Ingredient[];
+  color?: string;
+  amount?: number;
 }
 
 export class Ingredient {
   name: string;
-  amount: number
+  amount: number;
+  color?: string;
 }

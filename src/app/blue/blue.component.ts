@@ -41,8 +41,6 @@ export class BlueComponent {
     Object.keys(this.bluesForm.controls).forEach(key => {
       let ingredient = this.bluesForm.controls[key].value as Ingredient;
       if (ingredient.name && ingredient.amount) {
-
-        console.log(this.bluesForm.controls[key].value);
         target.push(this.bluesForm.controls[key].value);
       }
 

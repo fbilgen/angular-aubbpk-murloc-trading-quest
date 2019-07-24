@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { BlueComponent} from './blue/blue.component';
+import { PurpleComponent} from './purple/purple.component';
 import { IngredientService } from './ingredient.service';
 
 @NgModule({
@@ -18,7 +19,7 @@ import { IngredientService } from './ingredient.service';
     ReactiveFormsModule
     ],
   providers: [ IngredientService],
-  declarations: [AppComponent, BlueComponent],
+  declarations: [AppComponent, BlueComponent, PurpleComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

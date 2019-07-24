@@ -13,32 +13,30 @@ export class AppComponent {
   bluesForm: FormGroup;
   greens: Item[];
   blues: Item[];
-  result: string[];
+  result: Item[];
 
   hurlgrl = ['Sweet Sea Vegetable', 'Jar of Fish Faces', 'Dirty Murloc Sock', 'Healty Murloc Lunch', 'Cultist Pinky Finger'];
 
-  constructor( private ingredientService: IngredientService) {
+  constructor(private ingredientService: IngredientService) {
   }
 
   prepareBlues(target: Ingredient[]) {
     this.result = [];
-    this.greens  = this.ingredientService.getGreens();
+    this.greens = this.ingredientService.getGreens();
     this.blues = this.ingredientService.getBlues();
     target.forEach(x => {
-      console.log('>>>>>> ' + x.name + ',' + x.amount);
-      this.result.push('>>>>>> ' + x.name + ',' + x.amount);
+      this.result.push({ name: x.name, ingredients: [], color:"blue", amount:x.amount });
       var greens = this.blues.find(b => b.name == x.name).ingredients;
+      var blueTarget = this.result.find(item => item.name == x.name);
 
       greens.forEach(g => {
-        var green = g.name;
-        console.log('Green: ' + g.name + ',' + x.amount * g.amount);
-          this.result.push('Green: ' + g.name + ',' + x.amount * g.amount);
+        blueTarget.ingredients.push({ name: g.name, amount: x.amount * g.amount, color:"green"});
+        //this.result.push({name : g.name , amount : x.amount * g.amount });
 
-        var whites = [...this.greens.find(w => w.name == green).ingredients];
+        var whites = [...this.greens.find(w => w.name == g.name).ingredients];
         whites.forEach(w => {
-          var white = w.name;
-          console.log('White: ' + w.name + ',' + x.amount * g.amount * w.amount);
-          this.result.push('White: ' + w.name + ',' + x.amount * g.amount * w.amount);
+          blueTarget.ingredients.push({ name: w.name, amount: x.amount * g.amount * w.amount, color:"white" });
+          // this.result.push({name : w.name , amount: x.amount * g.amount * w.amount});
         });
       });
     });

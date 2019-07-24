@@ -5,4 +5,19 @@
 
 body{
   padding:20px;
+    font-size:medium;
+}
+
+.green{
+ color: #28a745;
+
+}
+
+.white{
+
+}
+
+.blue{
+  color: #007bff;
+  font-size:large;
 }
