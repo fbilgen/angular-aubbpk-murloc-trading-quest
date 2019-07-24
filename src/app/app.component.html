@@ -2,7 +2,7 @@
 	<mat-tab label="Rares">
 	  <app-rare (rareTargets)="prepareRares($event)"></app-rare>
 		<br>
-    <div class="jumbotron" *ngFor="let item of blueResult">
+    <div class="jumbotron" *ngFor="let item of rareResult">
         <label [class]="item.color">  {{item.name}} ({{item.amount}}) </label>
         <div *ngFor="let ingredient of item.ingredients">
           <label [class]="ingredient.color">{{ingredient.name}} ({{ingredient.amount}}) </label>

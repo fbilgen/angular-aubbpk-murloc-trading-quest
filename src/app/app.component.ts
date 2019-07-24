@@ -10,10 +10,9 @@ import { IngredientService } from './ingredient.service';
 })
 export class AppComponent implements OnInit {
 
-  bluesForm: FormGroup;
-  greens: Item[];
-  blues: Item[];
-  blueResult: Item[] = [];
+  uncommons: Item[];
+  rares: Item[];
+  rareResult: Item[] = [];
 
   hurlgrl = ['Sweet Sea Vegetable', 'Jar of Fish Faces', 'Dirty Murloc Sock', 'Healty Murloc Lunch', 'Cultist Pinky Finger'];
 
@@ -21,26 +20,28 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.greens = this.ingredientService.getGreens();
-    this.blues = this.ingredientService.getRares();
+    this.uncommons = this.ingredientService.getUncommons();
+    this.rares = this.ingredientService.getRares();
   }
 
   prepareRares(target: Ingredient[]) {
 
     target.forEach(x => {
-      let blueItem = { name: x.name, ingredients: [], color:"blue", amount:x.amount };
-      var greens = this.blues.find(b => b.name == x.name).ingredients;
+      // create rareItem result
+      let result = { name: x.name, ingredients: [], color:"blue", amount:x.amount };
 
-      greens.forEach(g => {
-        blueItem.ingredients.push({ name: g.name, amount: x.amount * g.amount, color:"green"});
-
-        var whites = [...this.greens.find(w => w.name == g.name).ingredients];
-        whites.forEach(w => {
-        blueItem.ingredients.push({ name: w.name, amount: x.amount * g.amount * w.amount, color:"white" });
+      // uncommons
+      this.rares.find(r => r.name == x.name).ingredients
+      .forEach(u => {
+        result.ingredients.push({ name: u.name, amount: x.amount * u.amount, color:"green"});
+        //commons : clone from uncommons
+        [...this.uncommons.find(w => w.name == u.name).ingredients]
+        .forEach(w => {
+          result.ingredients.push({ name: w.name, amount: x.amount * u.amount * w.amount, color:"white" });
         });
       });
 
-      this.blueResult.push(blueItem);
+      this.rareResult.push(result);
     });
   }
 

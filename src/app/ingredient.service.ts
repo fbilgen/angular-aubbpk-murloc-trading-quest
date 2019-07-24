@@ -4,14 +4,14 @@ import {Ingredient, Item} from "./app.models";
 @Injectable()
 export class IngredientService{
 
-  whites: Item[] = [
+  commons: Item[] = [
     { name: 'Unidentified Mass', ingredients: [{ name: 'G', amount: 1 }] },
     { name: 'Slimy Naga Eyeball', ingredients: [{ name: 'G', amount: 1 }] },
     { name: 'Sweet Sea Vegetable', ingredients: [{ name: 'G', amount: 1 }] },
     { name: 'Flatulent Fish', ingredients: [{ name: 'G', amount: 1 }] },
   ]
 
-  greens: Item[] = [
+  uncommons: Item[] = [
     { name: 'Bag of Who-Knows-What', ingredients: [{ name: 'Flatulent Fish', amount: 2 }] },
     { name: 'Just Regular Butter', ingredients: [{ name: 'Sweet Sea Vegetable', amount: 4 }] },
     { name: 'Disintegrating Sand Sculpture', ingredients: [{ name: 'Sweet Sea Vegetable', amount: 4 }] },
@@ -29,28 +29,25 @@ export class IngredientService{
     { name: 'Sea Giant Foot Dust', ingredients: [{ name: 'Dirty/Clean Murloc Sock', amount: 3 }] }
   ];
 
-  purples: Item[] = [
+  epics: Item[] = [
     { name: 'Beckoners Rosetta Stone', ingredients: [{ name: 'Smelly Pile of Gloop', amount: 2 }, { name: 'Particularly Dense Rock', amount: 9 }] },
     { name: 'Pulsating Blood Stone', ingredients: [{ name: 'Sea Giant Foot Dust', amount: 8 }, { name: 'Healthy Murloc Lunch', amount: 7 }] },
     { name: 'Cultist Pinky Finger', ingredients: [{ name: 'Smelly Pile of Gloop', amount: 4 }, { name: 'Ghost Food', amount: 7 }] },
     { name: 'Overwhelmingly-Alluring Idol', ingredients: [{ name: 'Healthy Murloc Lunch', amount: 8 }, { name: 'Ghost Food', amount: 4 }] },
   ]
   constructor(){
-
   }
 
+  getCommons(){
+   return this.commons;
+  }
+  getUncommons(){
+    return this.uncommons;
+  }
   getRares(){
     return this.rares;
   }
-
-  getGreens(){
-    return this.greens;
+  getEpics(){
+    return this.epics;
   }
-
-  getPurples(){
-    return this.purples;
-  }
- getWhites(){
-   return this.whites;
- }
 }
