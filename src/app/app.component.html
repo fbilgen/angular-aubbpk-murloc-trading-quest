@@ -3,9 +3,9 @@
 	  <app-rare (rareTargets)="prepareRares($event)"></app-rare>
 		<br>
     <div class="jumbotron" *ngFor="let item of rareResult">
-        <label [class]="item.color">  {{item.name}} ({{item.amount}}) </label>
+        <label [class]="item.color">  {{item.name}} ({{item.amount}}) {{item.murloc}} </label>
         <div *ngFor="let ingredient of item.ingredients">
-          <label [class]="ingredient.color">{{ingredient.name}} ({{ingredient.amount}}) </label>
+          <label [class]="ingredient.color">{{ingredient.name}} ({{ingredient.amount}}) {{ingredient.murloc}} </label>
         </div>
     </div>
 	</mat-tab>
